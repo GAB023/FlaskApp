@@ -4,6 +4,12 @@ from flask_mail import Mail
 from flask_login import LoginManager
 from flask_jwt_extended import JWTManager
 from flask_migrate import Migrate
+from dotenv import load_dotenv
+import os
+
+load_dotenv()  
+# Diese Zeile lädt die .env Datei
+
 
 
 db = SQLAlchemy()
