@@ -10,10 +10,6 @@ import os
 load_dotenv()  
 # Diese Zeile lädt die .env Datei
 
-DB_USER = os.getenv('DB_USER')
-DB_PASSWORD = os.getenv('DB_PASSWORD')
-DB_HOST = os.getenv('DB_HOST')
-DB_NAME = os.getenv('DB_NAME')
 
 db = SQLAlchemy()
 mail = Mail()  
@@ -26,6 +22,12 @@ jwt = JWTManager()
 
 def create_app():
     app = Flask(__name__)
+
+    DB_USER = os.getenv('DB_USER')
+    DB_PASSWORD = os.getenv('DB_PASSWORD')
+    DB_HOST = os.getenv('DB_HOST')
+    DB_NAME = os.getenv('DB_NAME')
+    
     app.config['SECRET_KEY'] = 'abc'
     app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+mysqlconnector://{DB_USER}:{DB_PASSWORD}@{DB_HOST}/{DB_NAME}"
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
