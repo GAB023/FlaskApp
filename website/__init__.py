@@ -7,9 +7,6 @@ from flask_migrate import Migrate
 from dotenv import load_dotenv
 import os
 
-load_dotenv()  
-# Diese Zeile lädt die .env Datei
-
 
 db = SQLAlchemy()
 mail = Mail()  
@@ -19,10 +16,12 @@ jwt = JWTManager()
 # Hier wurde aufgrund dem Hochladen auf GitHub die Zugangsdaten der DB entfert.
 # Diese muss beim Deployment manuell erstellt werden. 
 
-
 def create_app():
     app = Flask(__name__)
 
+    load_dotenv()  
+    # Diese Zeile lädt die .env Datei
+    
     DB_USER = os.getenv('DB_USER')
     DB_PASSWORD = os.getenv('DB_PASSWORD')
     DB_HOST = os.getenv('DB_HOST')
